@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "3001:3001"
+    networks:
+      - ecommerce-network
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "3002:3002"
+    networks:
+      - ecommerce-network
+
+  cart-service:
+    build: ./cart-service
+    ports:
+      - "3003:3003"
+    networks:
+      - ecommerce-network
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "3004:3004"
+    networks:
+      - ecommerce-network
+
+  recommendation-service:
+    build: ./recommendation-service
+    ports:
+      - "3005:3005"
+    networks:
+      - ecommerce-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
